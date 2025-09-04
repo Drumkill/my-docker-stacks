@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - ./config/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8123:8123"
+    networks: [domotics]
+
+networks:
+  domotics:
+    name: domotics

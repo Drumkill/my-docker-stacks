@@ -3,3 +3,5 @@
 *.bak
 *.tmp
 **/data/
+*.sql
+*/config/*

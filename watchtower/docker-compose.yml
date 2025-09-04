@@ -1,0 +1,15 @@
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Paris
+    command:
+      - --label-enable
+      - --cleanup
+      - --schedule=0 0 4 * * * # mise à jour tous les jours à 4h
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
